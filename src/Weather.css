@@ -5,3 +5,8 @@
   border-radius: 4px;
   color: rgb(135, 135, 135);
 }
+.btn {
+  margin: 4px;
+  background-color: blueviolet;
+  border-color: blueviolet;
+}
