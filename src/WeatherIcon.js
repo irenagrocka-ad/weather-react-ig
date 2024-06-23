@@ -13,10 +13,10 @@ export default function WeatherIcon(props) {
         "04n": "CLOUDY",
         "09d": "RAIN",
         "09n": "RAIN",
-        "10d": "RAIN",
-        "10n": "RAIN",
-        "11d": "RAIN",
-        "11n": "RAIN",
+        "10d": "SLEET",
+        "10n": "SLEET",
+        "11d": "SLEET",
+        "11n": "SLEET",
         "13d": "#6495ED",
         "13n": "#6495ED",
         "50d": "FOG",
@@ -42,7 +42,6 @@ export default function WeatherIcon(props) {
         "50d": "#708090",
         "50n": "#708090",
     };
-
 
     return (
         <ReactAnimatedWeather
