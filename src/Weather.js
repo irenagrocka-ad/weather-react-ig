@@ -20,7 +20,7 @@ export default function Weather(props) {
             description: response.data.weather[0].description
         });
     }
-    function search(event) {
+    function search() {
         let apiKey = "094780c710fa4efd669f0df8c3991927";
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
         axios.get(apiUrl).then(handleResponse);
@@ -44,13 +44,11 @@ export default function Weather(props) {
                 </div>
             </div>
         </form>
-
-
     );
 
     if (weatherData.ready) {
         return (
-            <div>
+            <div className="Weather">
                 {form}
                 <div className="mt-5">
                     <WeatherInfo data={weatherData} />
@@ -58,9 +56,7 @@ export default function Weather(props) {
             </div >
         );
     } else {
-        let apiKey = "094780c710fa4efd669f0df8c3991927";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(handleResponse);
-        return "Loading....";
+        search();
+        return "Loading...";
     }
 }
