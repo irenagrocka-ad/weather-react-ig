@@ -49,16 +49,18 @@ export default function Weather() {
         return (
             <div>
                 {form}
-                <ul>
-                    <li>Temperature: {Math.round(weather.temperature)}°C</li>
-                    <li>Description: {weather.description}</li>
-                    <li>Humidity: {weather.humidity}%</li>
-                    <li>Wind: {weather.wind}km/h</li>
-                    <li>
-                        <img src={weather.icon} alt={weather.description} />
-                    </li>
-                </ul>
-            </div>
+                <div className="mt-5">
+                    <ul>
+                        <li>Temperature: {Math.round(weather.temperature)}°C</li>
+                        <li>Description: {weather.description}</li>
+                        <li>Humidity: {weather.humidity}%</li>
+                        <li>Wind: {weather.wind}km/h</li>
+                        <li>
+                            <img src={weather.icon} alt={weather.description} />
+                        </li>
+                    </ul>
+                </div>
+            </div >
         );
     } else {
         return form;
