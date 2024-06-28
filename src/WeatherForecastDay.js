@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherForecastDay(props) {
+    const [unit, setUnit] = useState("celsius");
+
     function maxTemperature() {
-        let temperature = Math.round(props.data.temp.max);
-        return `${temperature}°`;
+        let temperature = props.data.temp.max;
+        if (unit === "fahrenheit") {
+            temperature = (temperature * 9 / 5) + 32;
+        }
+        return `${Math.round(temperature)}°`;
     }
 
     function minTemperature() {
-        let temperature = Math.round(props.data.temp.min);
-        return `${temperature}°`;
+        let temperature = props.data.temp.min;
+        if (unit === "fahrenheit") {
+            temperature = (temperature * 9 / 5) + 32;
+        }
+        return `${Math.round(temperature)}°`;
     }
 
     function day() {
         let date = new Date(props.data.dt * 1000);
         let day = date.getDay();
-
         let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
         return days[day];
+    }
+
+    function showFahrenheit(event) {
+        event.preventDefault();
+        setUnit("fahrenheit");
+    }
+
+    function showCelsius(event) {
+        event.preventDefault();
+        setUnit("celsius");
     }
 
     return (
@@ -32,7 +48,13 @@ export default function WeatherForecastDay(props) {
                 <span className="WeatherForecast-temperature-min">
                     {minTemperature()}
                 </span>
-                <span className="WeatherForecast-temperature-unit">C</span>
+                <span className="WeatherForecast-temperature-unit">
+                    {unit === "celsius" ? (
+                        <span>°C | <a href="/" onClick={showFahrenheit}>°F</a></span>
+                    ) : (
+                        <span><a href="/" onClick={showCelsius}>°C</a> | °F</span>
+                    )}
+                </span>
             </div>
         </div>
     );
