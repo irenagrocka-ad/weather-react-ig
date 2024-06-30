@@ -2,29 +2,35 @@ import React from "react"
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature"
-import ReactAnimatedWeather from 'react-animated-weather';
+import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
     const windIcon = {
         icon: 'WIND',
         color: '#878787',
-        size: 32,
+        size: 20,
         animate: true
     };
     return (
         <div className="WeatherInfo">
-            <h1>{props.data.city}</h1>
-            <ul>
-                <li>
-                    <FormattedDate date={props.data.date} />
-                </li>
-                <li className="text-capitalize">{props.data.description}</li>
-            </ul>
-            <div className="row mt-3">
+            <div className="row">
                 <div className="col-6">
-                    <div className="d-flex">
+                    <h1 className="mb-3">{props.data.city}</h1>
+                    <ul>
+                        <li>
+                            <FormattedDate date={props.data.date} /> </li>
+                        <li className="text-capitalize"> {props.data.description}</li>
+                        <li>
+                            Humidity: <span className="WeatherInfo-humidity">{props.data.humidity}%</span>
+                        </li>
+                        <li>Wind: <span className="WeatherInfo-wind"> {props.data.wind} km/h </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-8">
+                    <div className="d-flex mt-5">
                         <div>
-                            <WeatherIcon code={props.data.icon} size={64} />
+                            <WeatherIcon code={props.data.icon} size={80} />
                         </div>
 
                         <div>
@@ -32,20 +38,8 @@ export default function WeatherInfo(props) {
                         </div>
                     </div>
                 </div>
-                <div className="col-6">
-                    <ul>
-                        <li>Humidity: {props.data.humidity}%</li>
-                        <li>Wind: {props.data.wind} km/h
-                            <ReactAnimatedWeather
-                                icon={windIcon.icon}
-                                color={windIcon.color}
-                                size={windIcon.size}
-                                animate={windIcon.animate}
-                            />
-                        </li>
-                    </ul>
-                </div>
+
             </div>
-        </div>
+        </div >
     );
 }

@@ -22,7 +22,7 @@ export default function WeatherForecastHour(props) {
         <div className="WeatherForecastHour">
             <div className="WeatherForecast-hour">{formatHours(props.data.dt)}</div>
             <WeatherIcon code={props.data.weather[0].icon} size={36} />
-            <div className="WeatherForecast-temp">
+            <div className="WeatherForecast-temp Number">
                 {Math.round(convertTemperature(props.data.temp))}°{unit === "celsius" ? "C" : "F"}
             </div>
         </div>
