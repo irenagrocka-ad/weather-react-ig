@@ -4,7 +4,7 @@
   font-family: arial, sans-serif;
   border-radius: 10px;
   border: 1px solid blueviolet;
-  padding: 20px;
+  padding: 50px;
   color: #7e7b7b;
 }
 h1 {
@@ -24,7 +24,8 @@ a {
 }
 @media screen and (max-width: 600px) {
   .App {
-    padding: 20px;
+    margin: 30px auto;
+    padding: 30px;
     max-width: 400px;
   }
   h1 {
