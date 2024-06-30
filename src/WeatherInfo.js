@@ -25,7 +25,7 @@ const importAll = (r) => {
 }
 
 const cityImages = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
-const defaultImage = require('./images/rainbow.jpg').default;
+const defaultImage = require('./images/rainbow.jpg');
 
 export default function WeatherInfo(props) {
     const { city, date, description, humidity, wind, icon, temperature } = props.data;
