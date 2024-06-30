@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { UnitProvider } from "./UnitContext";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
+import HourlyForecast from "./HourlyForecast";
 import "./Weather.css"
 
 export default function Weather(props) {
@@ -49,13 +51,17 @@ export default function Weather(props) {
 
     if (weatherData.ready) {
         return (
-            <div className="Weather">
-                {form}
-                <div className="mt-5">
-                    <WeatherInfo data={weatherData} />
-                    <WeatherForecast coordinates={weatherData.coordinates} />
-                </div>
-            </div >
+            <UnitProvider>
+                <div className="Weather">
+                    {form}
+                    <div className="mt-5">
+                        <WeatherInfo data={weatherData} />
+                        <HourlyForecast coordinates={weatherData.coordinates} />
+                        <WeatherForecast coordinates={weatherData.coordinates} />
+
+                    </div>
+                </div >
+            </UnitProvider>
         );
     } else {
         search();

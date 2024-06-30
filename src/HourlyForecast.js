@@ -1,12 +1,9 @@
-/* eslint-disable array-callback-return */
-import React, { useState, useEffect } from "react"
-import WeatherForecastDay from "./WeatherForecastDay";
-import "./WeatherForecast.css"
+import React, { useState, useEffect } from "react";
+import WeatherForecastHour from "./WeatherForecastHour";
+import "./WeatherForecast.css";
 import axios from "axios";
 
-
-
-export default function WeatherForecast(props) {
+export default function HourlyForecast(props) {
     let [loaded, setLoaded] = useState(false);
     let [forecast, setForecast] = useState(null);
 
@@ -15,20 +12,20 @@ export default function WeatherForecast(props) {
     }, [props.coordinates]);
 
     function handleResponse(response) {
-        setForecast(response.data.daily);
+        setForecast(response.data.hourly);
         setLoaded(true);
     }
 
     if (loaded) {
         return (
-            <div className="WeatherForecast mt-5">
-                <h2>Daily Forecast</h2>
+            <div className="HourlyForecast mt-5">
+                <h2>Hourly Forecast</h2>
                 <div className="row">
-                    {forecast.map(function (dailyForecast, index) {
-                        if (index < 6 && index > 0) {
+                    {forecast.map(function (hourlyForecast, index) {
+                        if (index < 5) {  // Display only the first 12 hours
                             return (
                                 <div className="col" key={index}>
-                                    <WeatherForecastDay data={dailyForecast} />
+                                    <WeatherForecastHour data={hourlyForecast} />
                                 </div>
                             );
                         }

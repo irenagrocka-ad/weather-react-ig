@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import WeatherIcon from "./WeatherIcon";
+import { useUnit } from "./UnitContext";
 
 export default function WeatherForecastDay(props) {
-    const [unit, setUnit] = useState("celsius");
+    const { unit, toggleUnit } = useUnit();
 
     function maxTemperature() {
         let temperature = props.data.temp.max;
         if (unit === "fahrenheit") {
             temperature = (temperature * 9 / 5) + 32;
         }
-        return `${Math.round(temperature)}  `;
+        return `${Math.round(temperature)}`;
     }
 
     function minTemperature() {
@@ -27,16 +28,6 @@ export default function WeatherForecastDay(props) {
         return days[day];
     }
 
-    function showFahrenheit(event) {
-        event.preventDefault();
-        setUnit("fahrenheit");
-    }
-
-    function showCelsius(event) {
-        event.preventDefault();
-        setUnit("celsius");
-    }
-
     return (
         <div>
             <div className="WeatherForecast-day">{day()}</div>
@@ -44,19 +35,10 @@ export default function WeatherForecastDay(props) {
             <div className="WeatherForecast-temperatures">
                 <div>
                     <span className="WeatherForecast-temperature-max">
-                        {maxTemperature()}
+                        {maxTemperature()}°{unit === "celsius" ? "C" : "F"}
                     </span>
                     <span className="WeatherForecast-temperature-min">
-                        {minTemperature()}
-                    </span>
-                </div>
-                <div>
-                    <span className="WeatherForecast-temperature-unit">
-                        {unit === "celsius" ? (
-                            <span>°C | <a href="/" onClick={showFahrenheit}>°F</a></span>
-                        ) : (
-                            <span><a href="/" onClick={showCelsius}>°C</a> | °F</span>
-                        )}
+                        {minTemperature()}°{unit === "celsius" ? "C" : "F"}
                     </span>
                 </div>
             </div>
