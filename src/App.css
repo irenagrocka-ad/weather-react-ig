@@ -24,9 +24,9 @@ a {
 }
 @media screen and (max-width: 600px) {
   .App {
+    max-width: 400px;
     margin: 30px auto;
     padding: 30px;
-    max-width: 400px;
   }
   h1 {
     font-size: 32px;

@@ -43,3 +43,13 @@
   position: relative;
   line-height: 1;
 }
+.WeatherForecast {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.HourlyForecast {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

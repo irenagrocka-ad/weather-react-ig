@@ -19,10 +19,10 @@ export default function HourlyForecast(props) {
     if (loaded) {
         return (
             <div className="HourlyForecast mt-5">
-                <h2>Hourly Forecast</h2>
+                <h2 className="mt-3">Hourly Forecast</h2>
                 <div className="row">
                     {forecast.map(function (hourlyForecast, index) {
-                        if (index < 5) {  // Display only the first 12 hours
+                        if (index < 6) {  // Display only the first 12 hours
                             return (
                                 <div className="col" key={index}>
                                     <WeatherForecastHour data={hourlyForecast} />
