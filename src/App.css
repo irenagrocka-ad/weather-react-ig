@@ -6,6 +6,7 @@
   border: 1px solid blueviolet;
   padding: 50px;
   color: #7e7b7b;
+  box-shadow: 10px 20px 30px rgba(65, 50, 100, 0.65);
 }
 h1 {
   color: #070606;
@@ -17,6 +18,9 @@ h1 {
 h2 {
   text-align: center;
   font-size: 32px;
+}
+hr {
+  border: 2px solid blueviolet;
 }
 a {
   text-decoration: none;
@@ -63,5 +67,8 @@ a {
     font-weight: 600;
     position: relative;
     line-height: 1;
+  }
+  .WeatherInfo-data {
+    text-align: center;
   }
 }
